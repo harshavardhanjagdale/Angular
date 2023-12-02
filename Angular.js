@@ -403,7 +403,7 @@ exports.getPoTaxValue=(reqData, cb)=>{
   // $event.target.checked
   ////////////////////////////////////////////////////////////////
   // to get latest Id from Database
-  firstInvoiceId="SPUUID" + 0001;
+  firstInvoiceId="SPUUID" + "0001";
   query:
 		`SELECT
 		(case when (SELECT MAX(InvoiceNo)) Is Null then ` +
@@ -697,3 +697,112 @@ exports.updateGINData = (reqData, cb) =>{
 		}
 	});
 }
+////////////////////////////////////////////////////////////////
+// command while giving error of peer depemdencies
+
+"npm install --legacy-peer-deps"
+
+"npm cache clean --force"
+
+// to kill all port and task of python in background
+"taskkill /IM python.exe /F"
+
+// to run the project in production envirnment
+"ng serve -c=production"
+
+// to build the project in production envirnment
+"ng build -c=production"
+
+////////////////////////////////////////////////////////////////////////
+`If working on new branch:
+
+Step 1: Checkout to development branch
+git checkout development
+
+Step 2: Take latest
+git pull
+
+Step 3: Create task specific branch
+git checkout -b Task/TATRACK-XX
+
+Step 4: Stage changes
+git add .
+
+Step 5: Commit changes
+git commit -m "TATRACK-XX - Your task description"
+
+Step 6: Publish your changes
+git push --set-upstream origin Task/TATRACK-XX
+
+Step 7: Merge changes to development and push
+git checkout development
+git merge Task/TATRACK-XX
+git push`
+
+
+////////////////////////////////////////////////////////////////
+
+`If working on existing branch:
+
+Step 1: Checkout to development branch
+git checkout development
+
+Step 2: Take latest
+git pull
+
+Step 3: Checkout to specific branch
+git checkout Task/TATRACK-XX
+
+Step 4: Merge changes of development
+git merge development
+
+Step 5: Commit changes
+git commit -m "TATRACK-XX - Your task description"
+
+Step 6: Push
+git push
+
+Step 7: Merge changes to development and push
+git checkout development
+git merge Task/TATRACK-XX
+git push`
+
+//////////////////////////////////////////////////////////////
+// permission authorisation by using directives
+`@Input('appUserAuthorizations')
+  set appUserAuthorizations(authorizations: string) {
+    this.authorizations = authorizations;
+  }
+
+  @Input('appUserAuthorizationsComponent')
+  set setComponent(component: string) {
+    this.component = component.substring(0, component.lastIndexOf('|'));
+    this.permission = component.substring(component.lastIndexOf('|')+1);
+    this.user = this.authenticationService.currentUserValue;
+    const authorityMap: Map<string, any[]> = new Map(JSON.parse(this.user.authority));
+    this.viewContainer.createEmbeddedView(this.templateRef);
+        this.hasView = true;
+        return
+
+    for (const obj of authorityMap) {
+      if (obj[0].toLowerCase().trim() === this.component.trim() && obj[1].find(e => e.toLowerCase().trim() === this.permission.toLowerCase().trim()) ) {
+        this.viewContainer.createEmbeddedView(this.templateRef);
+        this.hasView = true;
+        break;
+      }
+    }
+
+  }
+
+  constructor(private templateRef: TemplateRef<any>,
+    private viewContainer: ViewContainerRef, private authenticationService: AuthenticationService) {
+  }`
+
+  // in html file
+  `<li *appUserAuthorizations="''; component:'reinsurer|update'">
+                    <a routerLink="/fileupload" "
+                      >Upload File</a>
+                  </li>`
+
+
+
