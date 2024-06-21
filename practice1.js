@@ -269,3 +269,11 @@ var substract = Number1.reduce(function (acc, value) {
     return acc + value;
 });
 console.log(substract);
+
+console.log(a); // undefined ,bcoz if condition is false still it will allocate memory
+console.log(b);   // reference error
+
+if(3=='three'){
+    var a=3;
+}
+let b=a
